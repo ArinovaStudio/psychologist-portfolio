@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono,Roboto_Slab } from "next/font/google";
+import { Unbounded } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Layout from "@/components/layouts/Layout";
 
-const geistSans = Roboto_Slab({
+const geistSans = Unbounded({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Roboto_Slab({
+const geistMono = Unbounded({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });

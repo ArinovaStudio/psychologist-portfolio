@@ -23,7 +23,7 @@ export default function Footer() {
 
           <Button
             size="lg"
-            className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-6"
+            className="rounded-full px-6"
           >
             Get in Touch <ArrowUpRight className="ml-2 h-4 w-4" />
           </Button>
@@ -60,7 +60,7 @@ export default function Footer() {
           {/* Navigation & Contact */}
           <div className="grid grid-cols-2 gap-6 text-sm">
             <div>
-              <h4 className="mb-4 font-semibold text-orange-400">Navigation</h4>
+              <h4 className="mb-4 font-semibold text-primary">Navigation</h4>
               <ul className="space-y-2">
                 {LINKS.map((item) => (
                   <li key={item}>
@@ -93,7 +93,7 @@ export default function Footer() {
                 placeholder="Email Address"
                 className="border-none rounded-none focus-visible:ring-0"
               />
-              <Button className="bg-orange-500 hover:bg-orange-600 rounded-none px-5">
+              <Button className="rounded-none px-5">
                 <SendHorizonal className="h-4 w-4 text-white" />
               </Button>
             </div>
