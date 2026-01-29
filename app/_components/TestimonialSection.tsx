@@ -1,6 +1,21 @@
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+"use client";
+
+import TestimonialCard from "@/components/cards/TestimonialCard";
+import { SwiperSlide } from "swiper/react";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
+const CustomSwiper = dynamic(() => import("@/components/CustomSwiper"), { ssr: false });
+
+import {Lexend} from "next/font/google";
+import { useEffect, useState } from "react";
+import {client} from "@/sanity/lib/client";
+import { testimonialsQuery } from "@/lib/queries";
+import { Loader2 } from "lucide-react";
+import Loader from "@/components/Loader";
+const lexend = Lexend({
+  subsets: ["latin"]
+})
 
 const testimonials = [
   {
@@ -30,73 +45,68 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  const [loaded,setLoaded] = useState(false);
+  const [testimonials,setTestimonials] = useState([]);
+  useEffect(()=>{
+    const fetchData = async () =>{
+      const response = await client.fetch(testimonialsQuery);
+      setTestimonials(response)
+      setLoaded(true);
+    }
+    fetchData();
+  },[]);
   return (
-    <section className="relative overflow-hidden py-24 bg-black text-white font-['lufga']">
-
-      {/* Content */}
+    <section className={`relative overflow-hidden py-24 bg-black text-white font-['lufga'] ${lexend.className}`}>
       <div className="relative z-10 w-full px-5 mx-auto px-6">
+
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
             Testimonials That <br />
             Speak to <span className="text-primary">My Results</span>
           </h2>
 
-          <p className="mt-4 text-gray-400 text-base">
+          <p className="mt-4 text-gray-200 text-base font-['Poppins']">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
             interdum ligula a dignissim. Lorem ipsum dolor sit amet.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials */}
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((item, index) => (
-            <Card
-              key={index}
-              className="relative rounded-2xl border border-white/10 bg-gray-300/20 backdrop-blur-lg"
-            >
-              <CardContent className="p-6 space-y-4">
-                {/* Quote icon */}
-                <div className="absolute  right-6 top-6 text-white text-6xl font-serif">
-                  “
-                </div>
-
-                {/* Profile */}
-                <div className="flex items-center gap-3">
-                  <div className="relative h-12 w-12 rounded-full overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-100">{item.name}</p>
-                    <p className="text-sm text-gray-400">{item.role}</p>
-                  </div>
-                </div>
-
-                {/* Rating */}
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    {Array.from({ length: item.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-orange-500 text-orange-500"
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm font-medium text-gray-300">5.0</span>
-                </div>
-
-                {/* Content */}
-                <p className="text-sm text-gray-300 leading-relaxed">
-                  {item.content}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        {/* <CustomSwiper>
+          {loaded ? testimonials.map((item, index) => (
+            <SwiperSlide key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
+                <TestimonialCard review={item} />
+              </motion.div>
+            </SwiperSlide>
+          )):<Loader/>}
+        </CustomSwiper> */}
+        <div className="w-full">
+          <Marquee pauseOnHover={true} className="flex w-full" speed={80}>
+          {loaded ? testimonials.map((item, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="mr-5"
+              >
+                <TestimonialCard review={item} />
+              </motion.div>
+          )):<Loader/>}
+          </Marquee>
         </div>
       </div>
     </section>

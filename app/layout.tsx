@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Unbounded } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
-import Layout from "@/components/layouts/Layout";
 
+import { Unbounded } from "next/font/google";
 const geistSans = Unbounded({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute={"class"} enableSystem>
-          <Layout>{children}</Layout>
+          {children}
         </ThemeProvider>
       </body>
     </html>

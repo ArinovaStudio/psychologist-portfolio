@@ -1,7 +1,12 @@
-import Image from "next/image";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+"use client";
+
+import BlogCard from "@/components/cards/BlogCard";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import dynamic from "next/dynamic";
+import { SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
+
+const CustomSwiper = dynamic(() => import("@/components/CustomSwiper"), { ssr: false });
 
 const blogs = [
   {
@@ -29,63 +34,62 @@ const blogs = [
     title: "Cinetrade: Innovative way to invest in Digital Media",
   },
 ];
+import {Lexend} from "next/font/google";
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
+import { blogsQuery } from "@/lib/queries";
+import { Loader2 } from "lucide-react";
+import Loader from "@/components/Loader";
+const lexend = Lexend({
+  subsets: ["latin"]
+})
 
 export default function BlogsReference() {
+  const [loaded,setLoaded] = useState(false);
+  const [blogs,setBlogs] = useState([]);
+  useEffect(()=>{
+    const fetchData = async () =>{
+      const response = await client.fetch(blogsQuery);
+      setBlogs(response)
+      setLoaded(true);
+    }
+    fetchData();
+  },[]);
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-16" id={"blogs"}>
       <div className="container mx-auto px-10">
+
         {/* Header */}
-        <div className="mb-12 flex items-center justify-between">
-          <h2 className="text-3xl font-bold text-slate-800">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-12 flex items-center justify-between mx-20"
+        >
+          <h2 className={`text-3xl font-bold text-slate-800 ${lexend.className}`}>
             From my <br /> blog post
           </h2>
 
           <Button className="rounded-full px-6">See All</Button>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog) => (
-            <Card key={blog.id} className="border-none shadow-none p-0 m-0">
-              <CardContent className="p-0">
-                {/* Image Box */}
-                <div
-                  className="relative h-[300px] w-full overflow-hidden rounded-2xl"
-                >
-                  <Image
-                    src={blog.image}
-                    alt={blog.title}
-                    fill
-                    className="object-cover"
-                  />
+        <CustomSwiper>
+          {loaded ? blogs.map((blog: any, index) => (
+            <SwiperSlide key={blog._id}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
+                <BlogCard blog={blog} />
+              </motion.div>
+            </SwiperSlide>
+          )):<Loader/>}
+        </CustomSwiper>
 
-                  <Button className="absolute shadow-[0px_0px_0px_20px_white] bottom-0 right-0 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white">
-                    <ArrowUpRight size={22} />
-                  </Button>
-                </div>
-
-                {/* Meta */}
-                <div className="mt-4 flex items-center gap-3">
-                  <span className="rounded-full bg-slate-100 px-4 py-1 text-sm font-medium text-slate-600">
-                    {blog.category}
-                  </span>
-                </div>
-
-                <div className="mt-3 flex items-center gap-2 text-sm text-slate-500">
-                  <span className="text-orange-500">•</span>
-                  <span>{blog.author}</span>
-                  <span className="text-orange-500">•</span>
-                  <span>{blog.date}</span>
-                </div>
-
-                {/* Title */}
-                <h3 className="mt-4 text-lg font-semibold leading-snug text-slate-800">
-                  {blog.title}
-                </h3>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
       </div>
     </section>
   );
