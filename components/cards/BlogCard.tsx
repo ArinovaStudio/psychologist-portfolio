@@ -18,8 +18,8 @@ interface Blog {
 }
 export default function BlogCard({ blog }: Blog) {
   return (
-    <Card className="border-none max-w-xs mx-auto! shadow-none p-0 m-0">
-      <CardContent className="p-0">
+    <Card className="border-none md:max-w-xs max-md:max-w-md w-full mx-auto! shadow-none p-0 m-0">
+      <CardContent className="p-0 ">
         {/* Image Box */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export default function BlogCard({ blog }: Blog) {
             </clipPath>
           </defs>
         </svg>
-        <div className="relative h-[300px] w-full overflow-hidden rounded-2xl">
+        <div className="relative max-md:h-[400px] md:h-[300px] w-full overflow-hidden rounded-2xl">
           <Image
             src={urlFor(blog.coverImage).width(600).height(400).url()}
             alt={blog.title}
@@ -43,7 +43,7 @@ export default function BlogCard({ blog }: Blog) {
           />
 
           <Link href={`/blog/${blog._id}`}>
-          <Button className="absolute hover:bg-gray-800! text-3xl! h-18! w-18! bottom-1 right-1 scale-110 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white">
+          <Button className="absolute hover:bg-gray-800! text-3xl! h-18! w-18! max-md:right-3 max-md:bottom-3 md:bottom-1 md:right-1 max-md:scale-125 md:scale-110 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white">
             <ArrowUpRight className="scale-200" size={40} />
           </Button> 
           </Link>

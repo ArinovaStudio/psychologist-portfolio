@@ -57,7 +57,7 @@ export default function BlogsReference() {
   },[]);
   return (
     <section className="w-full py-16" id={"blogs"}>
-      <div className="container mx-auto px-10">
+      <div className="container mx-auto md:px-10">
 
         {/* Header */}
         <motion.div
@@ -65,7 +65,7 @@ export default function BlogsReference() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-12 flex items-center justify-between mx-20"
+          className="mb-12 flex items-center justify-between max-md:mx-5 md:mx-20"
         >
           <h2 className={`text-3xl font-bold text-slate-800 ${lexend.className}`}>
             From my <br /> blog post
@@ -83,6 +83,7 @@ export default function BlogsReference() {
                 whileInView={{ opacity: 1, y: 0 }} 
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="flex justify-center"
               >
                 <BlogCard blog={blog} />
               </motion.div>

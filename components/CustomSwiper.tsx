@@ -11,11 +11,11 @@ export default function CustomSwiper({
     <Swiper
       observer={true}
       observeParents={true}
-      modules={[Autoplay, Pagination]}
+      modules={[Pagination]}
       spaceBetween={30}
       navigation
       loop
-      className="mt-5 justify-center py-3! pb-10! px-4! w-full"
+      className="mt-5 justify-center items-center py-3! pb-10! px-4! w-full"
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000 }}
       breakpoints={{

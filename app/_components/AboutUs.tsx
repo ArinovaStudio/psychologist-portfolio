@@ -33,7 +33,7 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-4xl font-bold tracking-tight text-orange-500 md:text-5xl"
+              className="text-4xl font-bold max-md:text-center tracking-tight text-orange-500 md:text-5xl"
             >
               ABOUT ME
             </motion.h2>
@@ -70,7 +70,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative flex justify-center md:justify-end"
+            className="relative flex justify-center max-md:hidden md:justify-end"
           >
             <Image
               src="/about.png"
