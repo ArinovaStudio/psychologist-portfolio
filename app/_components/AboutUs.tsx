@@ -19,7 +19,7 @@ export default function AboutSection() {
   return (
     <section className="w-full" id="about">
       <Card className={`mx-auto shadow-none rounded-3xl bg-gray-200/60 p-6 md:p-12 ${unbounded.className}`}>
-        <div className="grid grid-cols-1 px-5 items-center gap-10 md:grid-cols-2 max-md:row-reverse">
+        <div className="grid grid-cols-1 px-5 items-center gap-10 md:grid-cols-2">
 
           {/* Left Content */}
           <motion.div

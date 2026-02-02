@@ -94,9 +94,9 @@ export default function Footer() {
             <div>
               <h4 className="mb-4 font-semibold text-orange-400">Contact</h4>
               <ul className="space-y-2 text-neutral-400">
-                <li>+91 7738443636</li>
-                <li>Jaycreo36@gmail.com</li>
-                <li>Portfolio-jcreo.com</li>
+                <li className="break-words">+91 7738443636</li>
+                <li className="break-words">Jaycreo36@gmail.com</li>
+                <li className="break-words">Portfolio-jcreo.com</li>
               </ul>
             </div>
           </div>

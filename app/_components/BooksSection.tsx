@@ -26,7 +26,7 @@ export default function BooksSection() {
     },[]);
   return (
     <div className='relative mb-10'>
-      <div className={`absolute max-md:text-6xl text-9xl -z-1 w-full text-center grid items-center h-full min-h-[300px] ${unbounded.className}`}>
+      <div className={`absolute max-md:text-5xl text-9xl -z-1 w-full text-center grid items-center h-full min-h-[300px] ${unbounded.className}`}>
         MY BOOKS
       </div>
       <div className='px-3 w-full flex flex-col items-center gap-10 my-3'>

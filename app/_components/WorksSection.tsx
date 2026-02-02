@@ -61,7 +61,7 @@ export default function WorksSection() {
           transition={{ duration: 0.8 }}
           className="mb-20 grid grid-cols-1 gap-6 lg:grid-cols-2"
         >
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-4xl max-md:text-3xl font-bold tracking-tight sm:text-5xl">
             IMPRESSIVE <span className="text-primary">WORKS</span>
           </h2>
 
