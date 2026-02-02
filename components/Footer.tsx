@@ -52,23 +52,51 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           {/* About */}
           <div className="space-y-4">
-            <p className="text-sm leading-relaxed text-neutral-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              congue interdum ligula a dignissim. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.
+            <p className="text-sm leading-relaxed text-neutral-400 text-justify">
+              Shruti Sharma is a psychologist dedicated to providing thoughtful
+              and confidential mental health support. Her approach focuses on
+              understanding individual experiences and helping clients develop
+              practical strategies for emotional well-being and personal growth.
             </p>
 
             <div className="flex gap-4 text-neutral-400">
-              <Link href="https://www.threads.com/@mindsetpsychology4" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 bg-white rounded" viewBox="0 0 24 24" fill="#000000"><path fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4" color="currentColor"/></svg>
+              <Link
+                href="https://www.threads.com/@mindsetpsychology4"
+                target="_blank"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 bg-white rounded"
+                  viewBox="0 0 24 24"
+                  fill="#000000"
+                >
+                  <path
+                    fill="none"
+                    stroke="#000000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4"
+                    color="currentColor"
+                  />
+                </svg>
               </Link>
-              <Link href="https://www.linkedin.com/in/shruti-sharma-b21287263" target="_blank">
+              <Link
+                href="https://www.linkedin.com/in/shruti-sharma-b21287263"
+                target="_blank"
+              >
                 <Linkedin className="bg-white text-gray-800 hover:text-gray-900 text-lg! rounded p-1" />
               </Link>
-              <Link href="https://www.instagram.com/mindsetpsychology4" target="_blank">
+              <Link
+                href="https://www.instagram.com/mindsetpsychology4"
+                target="_blank"
+              >
                 <Instagram className="bg-white text-gray-800 hover:text-gray-900 text-lg! rounded p-1" />
               </Link>
-              <Link href="https://www.youtube.com/@psychologymindset-z9j" target="_blank">
+              <Link
+                href="https://www.youtube.com/@psychologymindset-z9j"
+                target="_blank"
+              >
                 <Youtube className="bg-white text-gray-800 hover:text-gray-900 text-lg! rounded p-1" />
               </Link>
             </div>
@@ -82,7 +110,7 @@ export default function Footer() {
                 {LINKS.map((item) => (
                   <li
                     key={item}
-                    onClick={()=>handleScroll(item)}
+                    onClick={() => handleScroll(item)}
                     className="hover:text-white capitalize transition cursor-pointer"
                   >
                     {item.replace("-", " ")}
@@ -94,9 +122,8 @@ export default function Footer() {
             <div>
               <h4 className="mb-4 font-semibold text-orange-400">Contact</h4>
               <ul className="space-y-2 text-neutral-400">
-                <li className="break-words">+91 7738443636</li>
-                <li className="break-words">Jaycreo36@gmail.com</li>
-                <li className="break-words">Portfolio-jcreo.com</li>
+                <li className="break-words">+91 6372323178</li>
+                <li className="break-words">mindsetpsychology4@gmail.com</li>
               </ul>
             </div>
           </div>
