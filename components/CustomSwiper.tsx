@@ -11,6 +11,7 @@ export default function CustomSwiper({
     <Swiper
       observer={true}
       observeParents={true}
+      watchSlidesProgress={true}
       modules={[Pagination]}
       spaceBetween={30}
       navigation

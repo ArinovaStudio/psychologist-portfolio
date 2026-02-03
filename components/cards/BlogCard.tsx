@@ -42,7 +42,7 @@ export default function BlogCard({ blog }: Blog) {
             style={{clipPath:`url("#clip")`}}
           />
 
-          <Link href={`/blog/${blog._id}`}>
+          <Link href={`/blog/${blog.slug.current}`}>
           <Button className="absolute hover:bg-gray-800! text-3xl! h-18! w-18! max-md:right-3 max-md:bottom-3 md:bottom-1 md:right-1 max-md:scale-125 md:scale-110 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white">
             <ArrowUpRight className="scale-200" size={40} />
           </Button> 

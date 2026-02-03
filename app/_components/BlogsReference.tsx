@@ -51,6 +51,7 @@ export default function BlogsReference() {
     const fetchData = async () =>{
       const response = await client.fetch(blogsQuery);
       setBlogs(response)
+      console.log(response);
       setLoaded(true);
     }
     fetchData();

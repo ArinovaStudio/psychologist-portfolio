@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 export default function Layout({ children }: React.PropsWithChildren) {
   const { setTheme } = useTheme();
   useEffect(() => {
-
+    // window.scrollTo(0,0);
     setTheme("light");
   }, []);
   return (
